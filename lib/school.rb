@@ -1,30 +1,29 @@
-class School
-  
-  attr_accessor :name,:roster
+class School 
+  attr_reader :name, :roster
   
   def initialize(name)
-    @name = name 
+    @name = name
     @roster = {}
-  end 
-  
+  end
   
   def add_student(name,grade)
-    if roster[grade]
-      roster[grade] << name
+    #roster is a hash 
+    
+    if @roster[grade]
+      @roster[grade] << name
     else 
-      roster[grade] =  [name]
-    end 
-  end 
+       @roster[grade] = [name] 
+    end
+  end
   
   def grade(grade)
+    # roster { 9 => ["Somename"]}
     roster[grade]
-  end 
+  end
   
-  def sort
-    sorted = {}
-    roster.each do |key,value|
-      sorted[key] =  value.sorted
+  def sort 
+    @roster.each do |key,value|
+      @roster[key] = value.sort
     end
-    sorted
-  end 
-end 
+  end
+end
